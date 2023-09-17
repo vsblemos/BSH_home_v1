@@ -1,0 +1,290 @@
+/* CSS RESET */
+ 
+* {
+    padding: 0;
+    margin:0
+}
+
+
+/* NAVBAR */
+
+#navbar {
+    height: 147px;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 72px;
+}
+
+#logo_container {
+    width:324px;
+    }
+
+.navbar_logo{
+    width:100%;
+    object-fit:cover;
+   
+}
+
+.navitem {
+    padding-right: 33px;
+    
+}
+
+a.navitem {
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    color: #000;
+    font-size: 1.2em;
+}
+
+/* HERO */
+
+#hero {
+    width:100%;
+    padding-bottom: 100px;
+   }
+
+.hero_banner{
+    object-fit : cover;
+    width:100%;
+    max-height: 450px;
+    min-height: 200px;
+}
+
+/* Products */
+
+.products_container {
+    padding: 0 72px;
+}
+
+.main_title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5em;
+    padding-top: 53px;
+
+}
+
+.product_grid {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+align-items: center;
+justify-content: space-between;
+gap: 40px;
+padding: 64px 70px 72px 70px;
+
+
+}
+
+.product_card {
+    width: 100%;
+    height: 312px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.product_image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Promo */
+
+#promo {
+    display: flex;
+    padding: 55px 117px;
+}
+
+.promo_message {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 41px;
+    word-wrap: break-word;
+    padding-left: 65px;
+    display: flex;
+    align-items: center;
+}
+
+/* FOOTER */
+
+.footer_container{
+    padding: 80px 72px 31px 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.line{
+    height: 5px;
+    background-color: #000;
+    margin: 0 72px;
+}
+
+.social_container {
+    padding-top: 26px;
+    padding-bottom: 57px;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* PRODUCT PAGE */
+
+.img_product_container {
+    padding: 60px 72px;
+    display: flex;
+    max-width: 1440px;
+    justify-content:center;
+    column-gap: 40px;
+}
+
+.product_info_image, .product_info {
+    width: 600px;
+    padding: 20px;
+}
+
+.product_info_image img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.product_info h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    padding-bottom: 20px;
+}
+
+.product_info span {
+    display:block;
+    font-size: 24px;
+    padding-bottom: 20px;
+
+    
+}
+
+.product_info input, .cart_item_container input {
+        width: 50px;
+        font-size: 20px;
+        padding: 10px 20px;
+        border-radius: 30px;
+        /* text-align: center; */
+        padding-left: 10px;
+        margin-bottom: 50px;
+        margin-right:20px;
+    }
+    
+    .product_info button, .btn_area button {
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-size: 20px;
+        text-transform: uppercase;
+        color:#fff;
+        background-color: black;
+
+    }
+
+    .product_info p {
+        font-family: 'Inter', sans-serif;
+        font-size:20px;
+        line-height: 24px;
+
+    }
+
+    .btn_area {
+        display: flex;
+        justify-content: flex-end;
+        padding: 15px 0;
+    }
+
+    .btn_area button:first-child {
+            margin-right: 20px;
+            background-color: #fff;
+            color: #000;
+    }
+
+    .cart_container {
+        padding: 20px 72px;
+    }
+
+    .cart_item {
+        display:flex;
+        justify-content:space-between;
+        padding:20px 0;
+    }
+
+    .cart_item p, .cart_item span, .qtd_price_area span{
+        font-size: 20px;
+        font-family: "Inter", sans-serif;
+    }
+
+    .cart_item_container {
+        display:flex;
+        align-items: center;
+    }
+
+    .cart_item_container input{
+        margin:0px;
+    }
+
+    .cart_item_container input, .cart_item_container span, .qtd_price_area span{
+        margin-right:30px;
+    }
+
+    .qtd_price_area {
+        text-align: right;
+        padding: 30px 0;
+        border-top: 1px solid;
+    }
+
+    .qtd_price_area span{
+        margin-right:54px;
+    }
+
+    #address_form {
+        margin: 0 auto;
+        width: 800px;
+        display:flex;
+        flex-direction: column;
+        justify-content:center;
+
+    }
+
+    .about_us {
+        padding: 10px 72px;
+    }
+
+    .about_us h1{
+        font-size: 28px;
+        font-family: "Montserrat", sans-serif;
+        text-align:center;
+        padding-bottom: 50px;
+
+    }
+
+    .about_us p{
+        font-size: 20px;
+        font-family: "Montserrat", sans-serif;
+        padding-bottom: 20px;
+
+    }
+
+    .contact_us {
+        display:flex;
+        padding: 10px 72px;
+        justify-content: center;
+            column-gap: 60px;
+    }
+
+    #contact_us {
+            display: flex;
+            flex-direction:column;
+    }
+           
+
+
+
+    
+
+
