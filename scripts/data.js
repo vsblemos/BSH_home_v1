@@ -1,3 +1,4 @@
+export const cartList = []
 export const catalogo = [
   { 
   id: 1, 
