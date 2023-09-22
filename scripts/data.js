@@ -1,4 +1,3 @@
-
 export const catalogo = [
   { 
   id: 1, 

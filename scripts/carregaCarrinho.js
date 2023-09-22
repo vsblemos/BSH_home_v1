@@ -1,5 +1,5 @@
 let cartData = JSON.parse(localStorage.getItem("cartList"));
-
+console.log(cartData)
 function carregarCarrinho(){
   let list = document.querySelector("ul.cart_list")
   console.log(list)
@@ -20,8 +20,21 @@ function carregarCarrinho(){
         </li>
     `
     list.innerHTML += c
-  
   }
 }
-
 carregarCarrinho()
+
+function somaValorQuantidade () {
+  let soma = 0
+  let qtd = 0
+  for(const s of cartData) {
+    soma += s.preco
+    qtd +=s.quantidade
+  }
+  document.querySelector(".qtd_price_area span:first-child").innerHTML = qtd
+  document.querySelector(".qtd_price_area span:nth-child(2)").innerHTML = soma
+  console.log(`Valor: ${soma} Quantidade: ${qtd}`)
+  console.log(qtd1)
+}
+
+somaValorQuantidade()

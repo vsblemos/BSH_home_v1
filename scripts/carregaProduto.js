@@ -9,8 +9,6 @@ if(cart !== null){
     cartList = cart
 } 
 
-
-
 const loadProduct = 
 `<div class="product_info_image">
 <img src="${produto.imagem}" alt="">
@@ -22,8 +20,6 @@ const loadProduct =
 <button>Comprar</button>
 <p>${produto.descricao}</p>
 </div>`
-
-
 
 document.querySelector("#product_container").innerHTML = loadProduct
 const btn = document.querySelector("button")
