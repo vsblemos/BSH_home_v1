@@ -1,6 +1,13 @@
-import { catalogo, cartList} from "../scripts/data.js";
+import { catalogo } from "../scripts/data.js";
 let produtoID = localStorage.getItem("prodID")
 let produto = catalogo.find((cat) => cat.id == produtoID)
+let cart = JSON.parse(localStorage.getItem("cartList"));
+let cartList = []
+
+console.log(cartList)
+if(cart !== null){
+    cartList = cart
+} 
 
 
 
@@ -17,13 +24,15 @@ const loadProduct =
 </div>`
 
 
+
 document.querySelector("#product_container").innerHTML = loadProduct
 const btn = document.querySelector("button")
 btn.addEventListener("click",() => addToCart())
 
 function addToCart() {
     let quantidade = parseInt(document.querySelector("input[type='number']").value)
-    let newCartProd = {...produto,teste:{quantidade}}
-   cartList.push(newCartProd);
-   console.log(cartList)
+    let newCartProd = {...produto,quantidade}
+    cartList.push(newCartProd);
+    localStorage.setItem('cartList',JSON.stringify(cartList))
+    console.log(cartList)
 }
