@@ -1,4 +1,5 @@
 import { catalogo } from "../scripts/data.js";
+import { carrinhoQuantidade } from "../scripts/funcoes.js";
 let produtoID = localStorage.getItem("prodID")
 let produto = catalogo.find((cat) => cat.id == produtoID)
 let cart = JSON.parse(localStorage.getItem("cartList"));
@@ -8,6 +9,8 @@ console.log(cartList)
 if(cart !== null){
     cartList = cart
 } 
+
+carrinhoQuantidade()
 
 const loadProduct = 
 `<div class="product_info_image">
@@ -30,5 +33,5 @@ function addToCart() {
     let newCartProd = {...produto,quantidade}
     cartList.push(newCartProd);
     localStorage.setItem('cartList',JSON.stringify(cartList))
-    console.log(cartList)
+    carrinhoQuantidade()
 }

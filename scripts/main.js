@@ -1,26 +1,8 @@
 import { catalogo } from "../scripts/data.js";
+import { carregarProdutos, abrirProduto } from "../scripts/funcoes.js";
+import { carrinhoQuantidade } from "../scripts/funcoes.js";
 
-let array = "";
 
-function carregarProdutos() {
-  for (const produto of catalogo) {
-    const card = `<div class="product_card" id="card-${produto.id}">
-    <a href="produto1.html" alt="" id="${produto.id}">
-        <img class="product_image" src="${produto.imagem}" id="${produto.id}">
-    </a>
-    `;
-    document.querySelector("#home_product_grid").innerHTML += card;
-  }
-}
-carregarProdutos();
-
-function carregaProduto() {
-  let productsCard = document.querySelectorAll(".product_card");
-  for (const productCard of productsCard) {
-    productCard.addEventListener("click", (e) => {
-      let produto = e.target.id;
-      localStorage.setItem("prodID",produto)
-    });
-  }
-}
-carregaProduto();
+carrinhoQuantidade()
+carregarProdutos(catalogo);
+abrirProduto();

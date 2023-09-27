@@ -295,7 +295,33 @@ padding: 64px 70px 72px 70px;
     }
            
 
+.cart_item_indicator {
+    font-size: 14px;
+    background-color: red;
+    border-radius: 100%;
+    padding: 5px;
+    color: #fff;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    position: relative;
+    right: 48px;
+    bottom: 18px;
+    display:inline-block;
+    visibility:hidden;
+    
+}
 
+.show {
+    visibility:visible;
+}
+
+.del-btn{
+    font-size: 28px;
+    background-color:black;
+    padding: 10px;
+    color: #fff
+}
 
     
 
