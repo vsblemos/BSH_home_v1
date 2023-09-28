@@ -1,37 +1,18 @@
-let pedidos = JSON.parse(localStorage.getItem("pedidos"));
-let listaPedidos = pedidos.map( (p) => {return p})
-const ({itens}) = listaPedidos
-console.log( itens )
+let data = JSON.parse(localStorage.getItem("pedidos"));
+const resultadoDiv = document.getElementById('resultado');
 
+data.forEach(pedido => {
+    resultadoDiv.innerHTML += `<h2>Itens do Pedido ${pedido.id}:</h2>`;
+    resultadoDiv.innerHTML += `<h3>Cliente ${pedido.endereco.nome}:</h3>`;
+    resultadoDiv.innerHTML += '<ul>';
 
-function carregaPedidos(){
-  const order = document.getElementById("orders")
-  console.log(listaPedidos)
-  for (const l of listaPedidos){
-    let it = (l.itens)
-    
-  
-   
-    let p = `<div>
-    <p>Pedido: ${l.id}</p>
-    <p>Cliente:${l.endereco.nome} Telefone: ${l.endereco.telefone}</p>
-    <p>E-Mail: ${l.endereco.email}</p>
-    <p>Endereço:${l.endereco.logradouro} Bairro: ${l.endereco.cidade}</p>
-    <p>Cidade : ${l.endereco.cidade} Estado: ${l.endereco.estado} CEP: ${l.endereco.CEP}</p>
-  </div>
-  <h3>Itens</h3>
-  <div class="teste"></div>
-  </div>`
-  order.innerHTML += p
-  
-    }
-  }
-  
-  
+    pedido.itens.forEach(item => {
+        resultadoDiv.innerHTML += '<hr>';
+        resultadoDiv.innerHTML += `<li>Título: ${item.titulo}</li>`;
+        resultadoDiv.innerHTML += `<li>Quantidade: ${item.quantidade}</li>`;
+        resultadoDiv.innerHTML += `<li>Preço: $${item.preco.toFixed(2)}</li>`;
+        resultadoDiv.innerHTML += '<hr>';
+    });
 
-      
-
-
-
-
-carregaPedidos()
+    resultadoDiv.innerHTML += '</ul>';
+});

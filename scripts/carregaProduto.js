@@ -5,7 +5,11 @@ let produto = catalogo.find((cat) => cat.id == produtoID)
 // let cart = JSON.parse(localStorage.getItem("cartList"));
 let cartList = []
 console.log(produto)
-
+let cart = JSON.parse(localStorage.getItem("cartList"));
+    
+if (cart == null || cart.length == 0) {
+    cart = []
+}
 
 
 carrinhoQuantidade()
@@ -27,11 +31,7 @@ const btn = document.querySelector("button")
 btn.addEventListener("click",() => addToCart())
 
 function addToCart() {
-    let cart = JSON.parse(localStorage.getItem("cartList"));
-    
-    if (cart == null || cart.length == 0) {
-        cart = []
-    }
+   
 
     if (cart.find((cat) => cat.id == produtoID)) {
     alert("produto já adicionado ao carrinho, será incluido mais uma unidade")
@@ -46,8 +46,8 @@ function addToCart() {
         
         let quantidade = parseInt(document.querySelector("input[type='number']").value)
         let newCartProd = {...produto,quantidade}
-        cartList.push(newCartProd);
-        localStorage.setItem('cartList',JSON.stringify(cartList))
+        cart.push(newCartProd);
+        localStorage.setItem('cartList',JSON.stringify(cart))
         alert("produto adicionado com sucesso")
         carrinhoQuantidade()
     }
