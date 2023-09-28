@@ -1,6 +1,9 @@
 let cartData = JSON.parse(localStorage.getItem("cartList"));
 import { somaValorQuantidade, carrinhoQuantidade } from "../scripts/funcoes.js";
 
+
+
+
 function carregarCarrinho(){
   let list = document.querySelector("ul.cart_list")
   console.log(list)
@@ -57,12 +60,19 @@ carrinhoQuantidade()
 function deletarItem(){
   let listaCarrinho = document.querySelector("ul.cart_list")
   let itemTobeDel = document.querySelectorAll("i.del-btn")
-  console.log(listaCarrinho.children)
   for (const item of itemTobeDel){
     item.addEventListener('click', (e) => {
     let idItem = e.target.parentNode.parentNode
-    console.log(idItem)
+    let itemIndex = cartData.findIndex(i => i.id == idItem.id)
+    // console.log(idItem.id)
     listaCarrinho.removeChild(idItem)
+    // console.log(itemIndex, cartData)
+    cartData.splice(itemIndex,1)
+    // console.log(cartData)
+    localStorage.setItem('cartList',JSON.stringify(cartData))
+    somaValorQuantidade(cartData)
+    carrinhoQuantidade()
+
 
     
   })}
@@ -70,3 +80,64 @@ function deletarItem(){
 
 deletarItem()
 
+
+
+
+const finalizar = document.querySelectorAll("button.finalizar")
+  for ( const f of finalizar) {
+    f.addEventListener("click", () => gerarPedido())
+  }
+
+
+function gerarPedido (){
+
+  
+  let cartData = JSON.parse(localStorage.getItem("cartList"));
+  let nome = document.querySelector("input#nome")
+  let logradouro = document.querySelector("input#logradouro")
+  let cidade = document.querySelector("input#cidade")
+  let bairro = document.querySelector("input#bairro")
+  let estado = document.querySelector("input#estado")
+  let telefone = document.querySelector("input#telefone")
+  let email = document.querySelector("input#email")
+  let listaCarrinho = document.querySelector("ul.cart_list")
+  let pedidos = JSON.parse(localStorage.getItem("pedidos"));
+  
+  if (pedidos == null || pedidos == 0) {
+    pedidos = []
+  }
+
+
+  let endereco ={ 
+    nome: nome.value,
+    logradouro: logradouro.value,
+    cidade: cidade.value,
+    bairro: bairro.value,
+    estado: estado.value,
+    telefone: telefone.value,
+    email: email.value,
+    cep: document.querySelector("input#CEP")
+  }
+
+  let pedido = { 
+    id: pedidos.length + 1,
+    itens : cartData,
+    endereco: endereco
+  
+  }
+
+  pedidos.push(pedido)
+  localStorage.setItem('pedidos',JSON.stringify(pedidos))
+  alert("Compra concluida com sucesso!")
+  listaCarrinho.remove()
+  localStorage.removeItem("cartList")
+  localStorage.removeItem("prodID")
+  carrinhoQuantidade()
+  console.log(pedidos)
+  
+  
+
+  
+  
+
+}

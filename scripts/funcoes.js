@@ -35,14 +35,22 @@ export function somaValorQuantidade (c) {
 
 export function carrinhoQuantidade (){
   let cart = JSON.parse(localStorage.getItem("cartList"));
-  let indicator = document.querySelector(".cart_item_indicator")
-  if (cart != null) {
-    let qtd = 0
-    for(const s of cart) {
-      qtd +=s.quantidade
-    }
-    indicator.innerHTML = qtd
-    indicator.classList.add("show")
-  }}
+  let indicator = document.querySelector(".cart_item_indicator");
+
+  if (cart == null || cart.length == 0){
+    indicator.classList.remove("show")
+  
+    } 
+  else { indicator.classList.add("show")
+  let qtd = 0
+  for(const s of cart) {
+  qtd +=s.quantidade
+  } 
+  indicator.innerHTML = qtd}
+}
+
+
+  
+  
 
 

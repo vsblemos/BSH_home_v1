@@ -2,13 +2,11 @@ import { catalogo } from "../scripts/data.js";
 import { carrinhoQuantidade } from "../scripts/funcoes.js";
 let produtoID = localStorage.getItem("prodID")
 let produto = catalogo.find((cat) => cat.id == produtoID)
-let cart = JSON.parse(localStorage.getItem("cartList"));
+// let cart = JSON.parse(localStorage.getItem("cartList"));
 let cartList = []
+console.log(produto)
 
-console.log(cartList)
-if(cart !== null){
-    cartList = cart
-} 
+
 
 carrinhoQuantidade()
 
@@ -29,9 +27,32 @@ const btn = document.querySelector("button")
 btn.addEventListener("click",() => addToCart())
 
 function addToCart() {
-    let quantidade = parseInt(document.querySelector("input[type='number']").value)
-    let newCartProd = {...produto,quantidade}
-    cartList.push(newCartProd);
-    localStorage.setItem('cartList',JSON.stringify(cartList))
+    let cart = JSON.parse(localStorage.getItem("cartList"));
+    
+    if (cart == null || cart.length == 0) {
+        cart = []
+    }
+
+    if (cart.find((cat) => cat.id == produtoID)) {
+    alert("produto já adicionado ao carrinho, será incluido mais uma unidade")
+    let itemIndex = cart.findIndex(i => i.id == produto.id)
+    console.log(cart[itemIndex].quantidade += 1)
+    console.log(cart)
+    localStorage.setItem('cartList',JSON.stringify(cart))
     carrinhoQuantidade()
+    
+}   
+    else {
+        
+        let quantidade = parseInt(document.querySelector("input[type='number']").value)
+        let newCartProd = {...produto,quantidade}
+        cartList.push(newCartProd);
+        localStorage.setItem('cartList',JSON.stringify(cartList))
+        alert("produto adicionado com sucesso")
+        carrinhoQuantidade()
+    }
+
 }
+
+
+
